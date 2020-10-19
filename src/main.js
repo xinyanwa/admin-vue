@@ -2,6 +2,7 @@ import Vue from 'vue'
 import ElementUI from 'element-ui'
 import axios from 'axios'
 import qs from 'qs'
+import echarts from 'echarts'
 import App from './App.vue'
 import router from './router'
 import store from './store'
@@ -12,6 +13,7 @@ axios.defaults.baseURL = 'http://127.0.0.1:9000'
 
 Vue.prototype.$qs = qs
 Vue.prototype.$axios = axios
+Vue.prototype.$echarts = echarts
 
 Vue.config.productionTip = false
 Vue.config.devtool = true

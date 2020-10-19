@@ -46,7 +46,7 @@
     <div class="user-page">
       <Pager :user-info-number="tableData.length"/>
     </div>
-    <Dialog :dialog-form-visible="dialog" :form-date="fromData" @dialog="changedialog"></Dialog>
+    <Dialog :dialog-form-visible="dialog" :form-date="fromData" @dialog="changedialog" @updateSuccess="updateSuceess"></Dialog>
   </div>
 </template>
 
@@ -100,6 +100,9 @@ export default {
     changedialog(){
       this.dialog = false
     },
+    updateSuceess(){
+      this.getUserInfo()
+    }
   },
   created() {
     this.userInfo()

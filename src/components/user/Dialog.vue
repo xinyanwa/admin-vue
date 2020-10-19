@@ -52,7 +52,7 @@ export default {
         role: [
           {required: true, message: '至少选择一项角色权限', trigger: 'blur'},
         ],
-      }
+      },
     };
   },
   props: {
@@ -73,17 +73,36 @@ export default {
     },
     changeUserInfo(form) {
       this.$refs[form].validate((valid) => {
-        console.log(this.formDate)
+        const date = this.$qs.stringify({
+          'userInfo':this.formDate
+        })
         if (valid) {
-          const date = this.formDate
-          this.$axios.post('/user/update', {
-            userName:date.user
-          })
+          this.$axios.post('/user/update', date)
               .then(response => {
-                console.log(response)
+                const {code, msg} = response.data
+                // console.log(code, msg)
+                if (code === 200) {
+                  /*this.$message({
+                    type: "success",
+                    message: msg,
+                    showClose: true
+                  })*/
+                  this.$emit('updateSuccess')
+                  this.closeDialog()
+                } else {
+                  this.$message({
+                    type: "error",
+                    message: msg,
+                    showClose: true
+                  })
+                }
               })
         } else {
-          console.log('error submit!!');
+          this.$message({
+            type: "error",
+            message: '表单检查错误，请重试',
+            showClose: true
+          })
           return false;
         }
       });
