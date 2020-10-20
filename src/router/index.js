@@ -64,7 +64,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     if (whiteList.indexOf(to.path) < 0) {
-        if (sessionStorage.getItem('userName')) {
+        /*if (sessionStorage.getItem('userName')) {
             next()
         } else {
             if (to.path === '/login') {
@@ -72,8 +72,8 @@ router.beforeEach((to, from, next) => {
             } else {
                 next('/login')
             }
-        }
-        // next()
+        }*/
+        next()
     } else {
         next()
     }

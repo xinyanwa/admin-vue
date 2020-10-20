@@ -15,35 +15,65 @@
         </el-col>
       </el-row>
     </div>
-    <div class="index-echarts" ref="myChart"></div>
+    <LineChart :option="option"/>
   </div>
 </template>
 
 <script>
 
+import LineChart from "@/components/main/LineChart";
 export default {
   name: "Index",
+  components: {LineChart},
   data() {
     return {
-      option: {
-        color:["#85f15a"],
-        title: {
-          text: '用户注册人数',
-          show:false
+      option: {title: {
+          /*text: '最近2天pv图',
+          textStyle:{
+            color: 'blue',
+            fontStyle: 'normal',
+            fontWeight: 'normal',
+            fontFamily: '微软雅黑',
+          }*/
         },
-        tooltip: {},
+        tooltip: {
+          trigger: 'axis'
+        },
         legend: {
-          data: ['人数']
+          data:['预计人数','实际人数']
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
         },
         xAxis: {
-          data: ['一月', '二月', '三月', '四月', '五月','六月','七月','八月','九月','十月','十一月','十二月']
+          type: 'category',
+          boundaryGap: false,
+          data: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
         },
-        yAxis: {},
-        series: [{
-          name: '人数',
-          type: 'line',
-          data: [5, 20, 36, 58, 96,20,30,50,60,80,30,10]
-        }]
+        yAxis: {
+          type: 'value'
+        },
+        series: [
+          {
+            name:'预计人数',
+            type:'line',
+            color:'#0ee7d5',
+            smooth:true,
+            stack: '总量',
+            data:[30,20,10,15]
+          },
+          {
+            name:'实际人数',
+            type:'line',
+            color:'#ab1acb',
+            smooth:true,
+            stack: '总量',
+            data:[30,20,10,15]
+          }
+        ]
       },
       numberInfo: [
         {
@@ -69,15 +99,7 @@ export default {
       ],
     }
   },
-  methods: {
-    initEcharts() {
-      const indexChaert = this.$echarts.init(this.$refs.myChart)
-      indexChaert.setOption(this.option)
-    },
-  },
-  mounted() {
-    this.initEcharts()
-  }
+  methods: {},
 }
 </script>
 
@@ -95,9 +117,10 @@ export default {
         align-items: center;
         padding: 15px;
         background: #fff;
-        &:hover{
-          .user-img{
-            color: #ffffff!important;
+
+        &:hover {
+          .user-img {
+            color: #ffffff !important;
             background: #40c9c6;
           }
         }
@@ -123,11 +146,6 @@ export default {
         }
       }
     }
-  }
-
-  .index-echarts {
-    width: 100%;
-    height: 200px;
   }
 }
 </style>
