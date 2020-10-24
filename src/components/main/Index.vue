@@ -16,18 +16,30 @@
       </el-row>
     </div>
     <LineChart :option="option"/>
+    <div class="pie-chart">
+      <div class="pie-chart-count">
+        <el-row :gutter="20">
+          <el-col :span="8" v-for="(index) in 3" :key="index">
+            <PieChart class="pie-chart-index"/>
+          </el-col>
+        </el-row>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 
 import LineChart from "@/components/main/LineChart";
+import PieChart from "@/components/main/PieChart";
+
 export default {
   name: "Index",
-  components: {LineChart},
+  components: {PieChart, LineChart},
   data() {
     return {
-      option: {title: {
+      option: {
+        title: {
           /*text: '最近2天pv图',
           textStyle:{
             color: 'blue',
@@ -40,7 +52,7 @@ export default {
           trigger: 'axis'
         },
         legend: {
-          data:['预计人数','实际人数']
+          data: ['预计人数', '实际人数']
         },
         grid: {
           left: '3%',
@@ -51,27 +63,27 @@ export default {
         xAxis: {
           type: 'category',
           boundaryGap: false,
-          data: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+          data: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
         },
         yAxis: {
           type: 'value'
         },
         series: [
           {
-            name:'预计人数',
-            type:'line',
-            color:'#0ee7d5',
-            smooth:true,
+            name: '预计人数',
+            type: 'line',
+            color: '#0ee7d5',
+            smooth: true,
             stack: '总量',
-            data:[30,20,10,15]
+            data: [30, 20, 10, 15]
           },
           {
-            name:'实际人数',
-            type:'line',
-            color:'#ab1acb',
-            smooth:true,
+            name: '实际人数',
+            type: 'line',
+            color: '#ab1acb',
+            smooth: true,
             stack: '总量',
-            data:[30,20,10,15]
+            data: [30, 20, 100, 15]
           }
         ]
       },
@@ -147,5 +159,34 @@ export default {
       }
     }
   }
+
+  .pie-chart {
+    width: 100%;
+    height: 200px;
+    background: #f7f7f7;
+
+    .pie-chart-count {
+      margin-top: 20px;
+      height: 200px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      box-sizing: border-box;
+      .el-row{
+        width: 100%;
+        margin-left: 20px!important;
+        margin-right: 20px!important;
+        .el-col{
+          &:first-child{
+            padding-left: 0!important;
+          }
+          &:last-child{
+            padding-right: 0!important;
+          }
+        }
+      }
+    }
+  }
+
 }
 </style>
