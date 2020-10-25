@@ -25,6 +25,13 @@
         </el-row>
       </div>
     </div>
+    <div>
+      <el-row>
+        <el-col :span="6">
+          <AboutMe :percentage-name="percentageName" :percentage="percent" :custom-colors="customColors"/>
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 
@@ -32,10 +39,11 @@
 
 import LineChart from "@/components/main/LineChart";
 import PieChart from "@/components/main/PieChart";
+import AboutMe from "@/components/aboutme/AboutMe";
 
 export default {
   name: "Index",
-  components: {PieChart, LineChart},
+  components: {AboutMe, PieChart, LineChart},
   data() {
     return {
       option: {
@@ -109,7 +117,23 @@ export default {
           index: '3344',
         },
       ],
+      percent:[
+        78,68,72,80
+      ],
+      percentageName:[
+          'Vue','JavaScript','HTML','CSS'
+    ],
+      customColors: [
+        {color: '#f56c6c', percentage: 20},
+        {color: '#e6a23c', percentage: 40},
+        {color: '#1989fa', percentage: 60},
+        {color: '#48ff9f', percentage: 70},
+        {color: '#5cb87a', percentage: 80},
+        {color: '#6f7ad3', percentage: 100},
+      ],
     }
+  },
+  computed:{
   },
   methods: {},
 }
