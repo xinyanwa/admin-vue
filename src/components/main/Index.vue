@@ -26,9 +26,12 @@
       </div>
     </div>
     <div>
-      <el-row>
+      <el-row :gutter=20>
         <el-col :span="6">
           <AboutMe :percentage-name="percentageName" :percentage="percent" :custom-colors="customColors"/>
+        </el-col>
+        <el-col :span="6">
+          <TodoMVC/>
         </el-col>
       </el-row>
     </div>
@@ -39,11 +42,12 @@
 
 import LineChart from "@/components/main/LineChart";
 import PieChart from "@/components/main/PieChart";
-import AboutMe from "@/components/aboutme/AboutMe";
+import AboutMe from "@/components/main/aboutme/AboutMe";
+import TodoMVC from "@/components/main/todomvc/TodoMVC";
 
 export default {
   name: "Index",
-  components: {AboutMe, PieChart, LineChart},
+  components: {TodoMVC, AboutMe, PieChart, LineChart},
   data() {
     return {
       option: {

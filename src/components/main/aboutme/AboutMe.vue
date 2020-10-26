@@ -65,7 +65,7 @@ export default {
 
     &:hover{
       img{
-        width: 120%;
+        width: 110%;
         opacity: 1;
       }
     }
