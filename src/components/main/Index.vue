@@ -122,7 +122,7 @@ export default {
         },
       ],
       percent:[
-        78,68,72,80
+        78,68,80,72
       ],
       percentageName:[
           'Vue','JavaScript','HTML','CSS'

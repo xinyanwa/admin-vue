@@ -4,6 +4,7 @@
 
 <script>
 export default {
+  inject:['reload'],
   name: "index",
   methods:{
     init(){
@@ -31,14 +32,14 @@ export default {
         word_arr.push({
           x : random(0,width),
           y : random(0,height),
-          text : '404页面未找到',
+          text : '5秒后返回主页',
           size : random(txt_min_size,txt_max_size)
         });
 
         word_arr.push({
           x : random(0,width),
           y : random(0,height),
-          text : '404页面未找到',
+          text : '5秒后返回主页',
           size : random(txt_min_size,txt_max_size)
         });
 
@@ -106,10 +107,21 @@ export default {
       window.addEventListener('keyup',function(){
         keypress = false;
       },true);
-    }
+    },
+    backMain(){
+      setInterval(()=>{
+        if (sessionStorage.getItem('userName')){
+          this.$router.push('/main/index')
+        } else {
+          this.$router.push('/login')
+        }
+      },5000)
+    },
   },
   created() {
     this.init()
+    this.reload()
+    this.backMain()
   }
 }
 </script>

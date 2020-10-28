@@ -102,6 +102,7 @@ export default {
   }
 
   .about-skill {
+    padding-bottom: 10px;
     ul {
       list-style: none;
 

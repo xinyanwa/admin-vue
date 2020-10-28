@@ -29,13 +29,16 @@ export default {
 }
 </script>
 
-<style scoped>
-.el-aside{
-  height: 100%;
-}
-.el-main{
-  border-top: 30px solid #f7f7f7;
-  border-left: 30px solid #f7f7f7;
-  border-right: 30px solid #f7f7f7;
+<style scoped lang="scss">
+.el-container{
+  background: #fff;
+  .el-aside{
+    height: 100%;
+  }
+  .el-main{
+    border-top: 30px solid #f7f7f7;
+    border-left: 30px solid #f7f7f7;
+    border-right: 30px solid #f7f7f7;
+  }
 }
 </style>
