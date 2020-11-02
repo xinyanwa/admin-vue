@@ -106,6 +106,10 @@ export default {
   },
   created() {
     this.userInfo()
+  },
+  mounted() {
+    this.$store.dispatch('handleSetRouteInfo',/*this.$route.path*/'用户管理')
+    // console.log(this.$route.path)
   }
 }
 </script>

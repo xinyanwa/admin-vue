@@ -2,10 +2,13 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../page/login'
 import Major from '../page/major';
-import Info from "@/components/info/Info";
 import Index from "@/components/main/Index";
 import User from "@/components/user/User";
 import Error from "@/components/error/Error";
+import ShopInfo from "@/components/info/shop/ShopInfo";
+import UserPicture from "@/components/info/picture/UserPicture";
+import ShopPicture from "@/components/info/picture/ShopPicture";
+import Info from "@/components/info/Info";
 
 Vue.use(VueRouter)
 
@@ -30,15 +33,47 @@ const routes = [
         component: Major,
         redirect: '/main/index',
         children: [
-            {
-                path: 'info',
-                name: 'Info',
-                component: Info
+            /*{
+                path: 'shopInfo',
+                name: 'ShopInfo',
+                component: ShopInfo
             },
+            {
+                path: 'userPicture',
+                name: 'UserPicture',
+                component: UserPicture
+            },
+            {
+                path: 'shopPicture',
+                name: 'ShopPicture',
+                component: ShopPicture
+            },*/
             {
                 path: 'index',
                 name: 'Index',
                 component: Index
+            },
+            {
+              path: 'info',
+              name: 'Info',
+              component: Info,
+              children:[
+                  {
+                      path: 'shopInfo',
+                      name: 'ShopInfo',
+                      component: ShopInfo
+                  },
+                  {
+                      path: 'userPicture',
+                      name: 'UserPicture',
+                      component: UserPicture
+                  },
+                  {
+                      path: 'shopPicture',
+                      name: 'ShopPicture',
+                      component: ShopPicture
+                  },
+              ]
             },
             {
                 path: 'user',

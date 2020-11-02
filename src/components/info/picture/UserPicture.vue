@@ -1,12 +1,10 @@
 <template>
-  <div>
-    <router-view></router-view>
-  </div>
+<div>用户图片</div>
 </template>
 
 <script>
 export default {
-  name: "info"
+  name: "UserPicture"
 }
 </script>
 

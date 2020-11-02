@@ -166,6 +166,10 @@ export default {
   },
   computed: {},
   methods: {},
+  mounted() {
+    this.$store.dispatch('handleSetRouteInfo',/*this.$route.path*/'控制台')
+    // console.log(this.$route.path)
+  }
 }
 </script>
 
