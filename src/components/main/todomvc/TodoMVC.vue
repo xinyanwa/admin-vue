@@ -124,8 +124,15 @@ export default {
 .todo-content {
   background: #ffffff;
   margin-top: 40px;
+  margin-bottom: 20px;
 
   .todo-head {
+    h4{
+      padding-top: 20px;
+      font-size: 20px;
+      font-weight: 500;
+      text-align: center;
+    }
     box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
   }
 

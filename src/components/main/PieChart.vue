@@ -7,61 +7,37 @@
 <script>
 export default {
   name: "PieChart",
+  props:{
+    pieData:{
+      type: Array,
+      default:()=>[
+        {value: 235, name: '视频广告', itemStyle: {color: '#2ec7c9'}},
+        {value: 274, name: '联盟广告', itemStyle: {color: '#b6a2de'}},
+        {value: 310, name: '邮件营销', itemStyle: {color: '#5ab1ef'}},
+        {value: 335, name: '直接访问', itemStyle: {color: '#ffb980'}},
+        {value: 400, name: '搜索引擎', itemStyle: {color: '#d87a80'}}
+      ]
+    }
+  },
   data() {
     return {
-      option: {
+      option:{
         backgroundColor: '#fff',
-        /*visualMap: {
-          show: false,
-          min: 80,
-          max: 600,
-          inRange: {
-            colorLightness: [0, 1]
-          }
-        },*/
         series: [
           {
             name: '访问来源',
             type: 'pie',
             radius: '55%',
-            data: [
-              {value: 235, name: '视频广告', itemStyle: {color: '#2ec7c9'}},
-              {value: 274, name: '联盟广告', itemStyle: {color: '#b6a2de'}},
-              {value: 310, name: '邮件营销', itemStyle: {color: '#5ab1ef'}},
-              {value: 335, name: '直接访问', itemStyle: {color: '#ffb980'}},
-              {value: 400, name: '搜索引擎', itemStyle: {color: '#d87a80'}}
-              // b6a2de
-            ],
+            data: this.pieData,
             roseType: 'angle',
             label: {
               position: 'outer',
               alignTo: 'edge',
               margin: 10
             },
-            /*label: {
-              normal: {
-                textStyle: {
-                  color: '#b6a2de'
-                }
-              }
-            },
-            labelLine: {
-              normal: {
-                lineStyle: {
-                  color: '#b6a2de'
-                }
-              }
-            },*/
-            /*itemStyle: {
-              normal: {
-                color: '#c01dec',
-                shadowBlur: 200,
-                shadowColor: 'rgba(0, 0, 0, 0.5)'
-              }
-            }*/
           }
         ]
-      }
+      },
     }
   },
   methods: {
@@ -74,7 +50,7 @@ export default {
     setTimeout(() => {
       this.initChart()
     })
-    window.onreset = ()=>{
+    window.onreset = () => {
       this.initChart.resize()
     }
   }

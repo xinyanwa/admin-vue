@@ -20,18 +20,21 @@
       <div class="pie-chart-count">
         <el-row :gutter="20">
           <el-col :span="8" v-for="(index) in 3" :key="index">
-            <PieChart class="pie-chart-index"/>
+            <PieChart :pie-data="pieChart[index-1]" class="pie-chart-index"/>
           </el-col>
         </el-row>
       </div>
     </div>
-    <div>
+    <div class="about-target">
       <el-row :gutter=20>
         <el-col :span="6">
           <AboutMe :percentage-name="percentageName" :percentage="percent" :custom-colors="customColors"/>
         </el-col>
         <el-col :span="6">
           <TodoMVC/>
+        </el-col>
+        <el-col :span="12">
+          <Target/>
         </el-col>
       </el-row>
     </div>
@@ -44,10 +47,11 @@ import LineChart from "@/components/main/LineChart";
 import PieChart from "@/components/main/PieChart";
 import AboutMe from "@/components/main/aboutme/AboutMe";
 import TodoMVC from "@/components/main/todomvc/TodoMVC";
+import Target from "@/components/main/target/Target";
 
 export default {
   name: "Index",
-  components: {TodoMVC, AboutMe, PieChart, LineChart},
+  components: {Target, TodoMVC, AboutMe, PieChart, LineChart},
   data() {
     return {
       option: {
@@ -87,7 +91,7 @@ export default {
             color: '#0ee7d5',
             smooth: true,
             stack: '总量',
-            data: [30, 20, 10, 15]
+            data: [30, 20, 10, 95, 60, 140, 56, 38, 56, 48, 56, 86]
           },
           {
             name: '实际人数',
@@ -95,7 +99,7 @@ export default {
             color: '#ab1acb',
             smooth: true,
             stack: '总量',
-            data: [30, 20, 100, 15]
+            data: [30, 20, 100, 15, 48, 56, 28, 68, 95, 94, 56, 86]
           }
         ]
       },
@@ -108,25 +112,25 @@ export default {
         {
           img: 'el-icon-s-comment',
           title: '消息通知',
-          index: '3344',
+          index: '33',
         },
         {
           img: 'el-icon-s-finance',
           title: '金额交易',
-          index: '3344',
+          index: '3124',
         },
         {
           img: 'el-icon-s-shop',
           title: '商品数量',
-          index: '3344',
+          index: '3586',
         },
       ],
-      percent:[
-        78,68,80,72
+      percent: [
+        78, 68, 80, 72
       ],
-      percentageName:[
-          'Vue','JavaScript','HTML','CSS'
-    ],
+      percentageName: [
+        'Vue', 'JavaScript', 'HTML', 'CSS'
+      ],
       customColors: [
         {color: '#f56c6c', percentage: 20},
         {color: '#e6a23c', percentage: 40},
@@ -135,10 +139,32 @@ export default {
         {color: '#5cb87a', percentage: 80},
         {color: '#6f7ad3', percentage: 100},
       ],
+      pieChart: [
+        [
+          {value: 225, name: '我喜欢你', itemStyle: {color: '#2ec7c9'}},
+          {value: 274, name: '无论啥时', itemStyle: {color: '#b6a2de'}},
+          {value: 310, name: '无论何地', itemStyle: {color: '#5ab1ef'}},
+          {value: 335, name: '义无反顾', itemStyle: {color: '#ffb980'}},
+          {value: 400, name: '去支持你', itemStyle: {color: '#d87a80'}}
+        ],
+        [
+          {value: 225, name: '网站消息', itemStyle: {color: '#2eb7c9'}},
+          {value: 274, name: '客服私聊', itemStyle: {color: '#d8a2de'}},
+          {value: 310, name: '联系站长', itemStyle: {color: '#5aefd9'}},
+          {value: 335, name: '商品消息', itemStyle: {color: '#ffd080'}},
+          {value: 400, name: '人工服务', itemStyle: {color: '#d87aa3'}}
+        ],
+        [
+          {value: 225, name: '菠萝系列', itemStyle: {color: '#2ec98b'}},
+          {value: 274, name: '大米系列', itemStyle: {color: '#a2b1de'}},
+          {value: 310, name: '蓝米系列', itemStyle: {color: '#c75aef'}},
+          {value: 335, name: '山寨系列', itemStyle: {color: '#ffdf80'}},
+          {value: 400, name: '蓝光系列', itemStyle: {color: '#cad87a'}}
+        ]
+      ],
     }
   },
-  computed:{
-  },
+  computed: {},
   methods: {},
 }
 </script>
@@ -200,19 +226,29 @@ export default {
       justify-content: space-around;
       align-items: center;
       box-sizing: border-box;
-      .el-row{
+
+      .el-row {
         width: 100%;
-        margin-left: 20px!important;
-        margin-right: 20px!important;
-        .el-col{
-          &:first-child{
-            padding-left: 0!important;
+        margin-left: 20px !important;
+        margin-right: 20px !important;
+
+        .el-col {
+          &:first-child {
+            padding-left: 0 !important;
           }
-          &:last-child{
-            padding-right: 0!important;
+
+          &:last-child {
+            padding-right: 0 !important;
           }
         }
       }
+    }
+  }
+
+  .about-target {
+    .el-row {
+      width: 100%;
+      margin-right: 20px !important;
     }
   }
 
