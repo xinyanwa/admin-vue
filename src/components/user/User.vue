@@ -38,7 +38,7 @@
           align="center"
           label="操作">
         <template slot-scope="scope">
-          <el-button type="danger" size="small">删除</el-button>
+          <el-button type="danger" size="small" @click="closeUser(scope.$index)">删除</el-button>
           <el-button type="success" size="small" @click="openDialog(scope.$index)">编辑</el-button>
         </template>
       </el-table-column>
@@ -46,22 +46,26 @@
     <div class="user-page">
       <Pager :user-info-number="tableData.length"/>
     </div>
-    <Dialog :dialog-form-visible="dialog" :form-date="fromData" @dialog="changedialog" @updateSuccess="updateSuceess"></Dialog>
+    <Dialog :dialog-form-visible="dialog" :form-date="fromData" @dialog="changedialog" @updateSuccess="updateSuceess"/>
+    <CloseDialog :dialog-visible="closeDialog" @closeDialog="changedialog" @deleteUser="deleteUser"/>
   </div>
 </template>
 
 <script>
 import Pager from "@/components/user/Pager";
 import Dialog from "@/components/user/Dialog";
+import CloseDialog from "@/components/user/CloseDialog";
 
 export default {
   name: "User",
-  components: {Dialog, Pager},
+  components: {CloseDialog, Dialog, Pager},
   data() {
     return {
       tableData: [],
       dialog: false,
-      fromData:{},
+      fromData: {},
+      closeDialog: false,
+      userDetele: {}
     }
   },
   methods: {
@@ -85,23 +89,49 @@ export default {
         }
       })
     },
-    userInfo(){
+    userInfo() {
       if (this.$store.state.userInfo.length > 0 && this.$store.state.userInfo) {
         this.tableData = [...this.$store.state.userInfo]
       } else {
         this.getUserInfo()
       }
     },
-    openDialog(scope){
+    openDialog(scope) {
       this.fromData = {...this.tableData[scope]}
-      console.log(this.tableData)
+      // console.log(this.tableData)
       this.dialog = true
     },
-    changedialog(){
+    changedialog() {
       this.dialog = false
+      this.closeDialog = false
     },
-    updateSuceess(){
+    updateSuceess() {
       this.getUserInfo()
+    },
+    closeUser(scope) {
+      this.userDetele = this.tableData[scope]
+      this.closeDialog = true
+    },
+    deleteUser() {
+      this.closeDialog = false
+      console.log(this.userDetele)
+      this.$axios.post('/user/delete',this.$qs.stringify(this.userDetele)).then(response => {
+        const {code, msg} = response.data
+        if (code) {
+          this.$message({
+            type: "success",
+            message: msg,
+            showClose: true
+          })
+          this.getUserInfo()
+        } else {
+          this.$message({
+            type: "error",
+            message: msg,
+            showClose: true,
+          })
+        }
+      })
     }
   },
   created() {
