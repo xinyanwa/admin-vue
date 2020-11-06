@@ -13,7 +13,7 @@
         <i class="el-icon-s-platform"></i>
         <span>控制台</span>
       </el-menu-item>
-      <el-submenu>
+      <el-submenu index="/main/info">
         <template slot="title">
           <i class="el-icon-tickets"></i>
           <span slot="title">信息管理</span>
