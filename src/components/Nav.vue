@@ -22,10 +22,6 @@
           <i class="el-icon-tickets"></i>
           <span slot="title">商品管理</span>
         </el-menu-item>
-        <el-menu-item index="/main/info/shopPicture">
-          <i class="el-icon-tickets"></i>
-          <span slot="title">图片管理</span>
-        </el-menu-item>
         <el-menu-item index="/main/info/userPicture">
           <i class="el-icon-tickets"></i>
           <span slot="title">头像管理</span>
@@ -66,9 +62,6 @@ export default {
           break;
         case '/main/info/shopInfo':
           this.$router.push('/main/info/shopInfo')
-          break;
-        case '/main/info/shopPicture':
-          this.$router.push('/main/info/shopPicture')
           break;
         case '/main/info/userPicture':
           this.$router.push('/main/info/userPicture')

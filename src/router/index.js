@@ -7,7 +7,6 @@ import User from "@/components/user/User";
 import Error from "@/components/error/Error";
 import ShopInfo from "@/components/info/shop/ShopInfo";
 import UserPicture from "@/components/info/picture/UserPicture";
-import ShopPicture from "@/components/info/picture/ShopPicture";
 import Info from "@/components/info/Info";
 
 Vue.use(VueRouter)
@@ -67,11 +66,6 @@ const routes = [
                       path: 'userPicture',
                       name: 'UserPicture',
                       component: UserPicture
-                  },
-                  {
-                      path: 'shopPicture',
-                      name: 'ShopPicture',
-                      component: ShopPicture
                   },
               ]
             },

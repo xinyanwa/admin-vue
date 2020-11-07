@@ -3,7 +3,8 @@
     <el-dialog
         title="提示"
         :visible.sync="dialogVisible"
-        width="30%">
+        width="30%"
+        @close="closeDialog">
       <span>这是一段信息</span>
       <span slot="footer" class="dialog-footer">
     <el-button @click="closeDialog">取 消</el-button>
@@ -26,10 +27,10 @@ export default {
     return {};
   },
   methods: {
-    closeDialog(){
+    closeDialog() {
       this.$emit('closeDialog')
     },
-    deleteUser(){
+    deleteUser() {
       this.$emit('deleteUser')
     }
   }
