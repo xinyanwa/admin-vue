@@ -18,15 +18,15 @@
           <i class="el-icon-tickets"></i>
           <span slot="title">信息管理</span>
         </template>
-        <el-menu-item index="/main/info/department">
-          <i class="el-icon-tickets"></i>
-          <span slot="title">部门管理</span>
-        </el-menu-item>
         <el-menu-item index="/main/info/user">
           <i class="el-icon-tickets"></i>
           <span slot="title">人员管理</span>
         </el-menu-item>
       </el-submenu>
+      <el-menu-item index="/main/info/department">
+        <i class="el-icon-tickets"></i>
+        <span slot="title">部门管理</span>
+      </el-menu-item>
       <el-menu-item index="/main/system">
         <i class="el-icon-user-solid"></i>
         <span slot="title">系统管理</span>
@@ -61,7 +61,7 @@ export default {
           this.$router.push('/main/system')
           break;
         case '/main/info/department':
-          this.$router.push('/main/info/department')
+          this.$router.push('/main/department')
           break;
         case '/main/info/user':
           this.$router.push('/main/info/user')

@@ -20,8 +20,8 @@
             <el-input v-model="ruleForm.password" prefix-icon="el-icon-lock" type="password" size="medium"
                       placeholder="请输入密码"></el-input>
           </el-form-item>
-          <el-form-item prop="code">
-            <el-input v-model="ruleForm.code" placeholder="请输入验证码"/>
+          <el-form-item prop="code" class="login-code">
+            <el-input v-model="ruleForm.code" placeholder="请输入验证码" class="code-input"/>
             <div id="code" @click="getCode"></div>
           </el-form-item>
           <el-button type="primary" @click="submitForm('ruleForm')" class="login-button">登录</el-button>
@@ -66,14 +66,15 @@ export default {
         if (valid) {
           await this.$axios.post('/user', this.$qs.stringify({
             userName: this.ruleForm.name,
-            password: this.ruleForm.password
+            password: this.ruleForm.password,
+            code: this.ruleForm.code
           })).then(response => {
             const {msg, code} = response.data
             if (code === 200) {
-              // console.log(111+response.data.data.response[0])
+              console.log(111+response.data.data.response[0])
               sessionStorage.setItem('userName', response.data.data.response[0].user)
-              sessionStorage.setItem('userPicture', response.data.data.response[0].picture)
-              // this.$store.dispatch('handleSetUserInfo',response.data.data.response[0])
+              sessionStorage.setItem('userPicture', response.data.data.response[0].pricer)
+              this.$store.dispatch('handleSetUserInfo',response.data.data.response[0])
               this.$router.push('/main')
               this.$message({
                 message: msg,
@@ -86,20 +87,19 @@ export default {
                 type: "error",
                 showClose: true,
               })
+              // this.getCode()
             }
           }).catch(() => {
             this.$message({
-              message: '登' +
-                  '录失败，请检查用户名或密码',
+              message: '登录失败，请检查用户名或密码',
               type: "error",
               showClose: true,
             })
           })
         } else {
-          this.$message({
-            message: '请检查用户名或密码或验证码是否填写',
-            type: "error",
-            showClose: true
+          this.$notify.error({
+            title: '检查失败',
+            message: '请确定用户名、密码和验证码是否填写'
           })
           return false;
         }
@@ -166,6 +166,12 @@ export default {
 
       .login-user {
         margin: 30px auto;
+      }
+
+      .login-code{
+        .code-input{
+          margin-bottom: 22px;
+        }
       }
 
       .login-button {

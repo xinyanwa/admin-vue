@@ -58,16 +58,16 @@ const routes = [
               component: Info,
               children:[
                   {
-                      path: 'department',
-                      name: 'department',
-                      component: Department
-                  },
-                  {
                       path: 'user',
                       name: 'user',
                       component: User
                   },
               ]
+            },
+            {
+                path: 'department',
+                name: 'department',
+                component: Department
             },
             {
                 path: 'system',
