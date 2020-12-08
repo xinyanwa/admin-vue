@@ -5,9 +5,9 @@ import Major from '../page/major';
 import Index from "@/components/main/Index";
 import User from "@/components/user/User";
 import Error from "@/components/error/Error";
-import ShopInfo from "@/components/info/shop/ShopInfo";
-import UserPicture from "@/components/info/picture/UserPicture";
 import Info from "@/components/info/Info";
+import Department from "@/components/department/Department";
+import System from "@/components/system/System";
 
 Vue.use(VueRouter)
 
@@ -58,21 +58,21 @@ const routes = [
               component: Info,
               children:[
                   {
-                      path: 'shopInfo',
-                      name: 'ShopInfo',
-                      component: ShopInfo
+                      path: 'department',
+                      name: 'department',
+                      component: Department
                   },
                   {
-                      path: 'userPicture',
-                      name: 'UserPicture',
-                      component: UserPicture
+                      path: 'user',
+                      name: 'user',
+                      component: User
                   },
               ]
             },
             {
-                path: 'user',
-                name: 'User',
-                component: User
+                path: 'system',
+                name: 'System',
+                component: System
             }
         ],
     }
@@ -93,7 +93,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     if (whiteList.indexOf(to.path) < 0) {
-        if (sessionStorage.getItem('userName')) {
+        /*if (sessionStorage.getItem('userName')) {
             next()
         } else {
             if (to.path === '/login') {
@@ -101,8 +101,8 @@ router.beforeEach((to, from, next) => {
             } else {
                 next('/login')
             }
-        }
-        /*next()*/
+        }*/
+        next()
     } else {
         next()
     }

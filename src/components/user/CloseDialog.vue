@@ -1,11 +1,11 @@
 <template>
   <div class="close-content">
     <el-dialog
-        title="提示"
+        title="删除用户"
         :visible.sync="dialogVisible"
         width="30%"
         @close="closeDialog">
-      <span>这是一段信息</span>
+      <span>确定删除该用户</span>
       <span slot="footer" class="dialog-footer">
     <el-button @click="closeDialog">取 消</el-button>
     <el-button type="primary" @click="deleteUser">确 定</el-button>

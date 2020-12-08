@@ -16,8 +16,8 @@
         </el-form-item>
         <el-form-item label="角色" :label-width="formLabelWidth" prop="role">
           <el-radio-group v-model="formDate.role">
-            <el-radio label="admin"></el-radio>
-            <el-radio label="editor"></el-radio>
+            <el-radio label="部门管理员"></el-radio>
+            <el-radio label="普通人员"></el-radio>
           </el-radio-group>
         </el-form-item>
       </el-form>

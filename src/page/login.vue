@@ -6,7 +6,12 @@
         <h3 class="title-register">注册</h3>
       </div>
       <div class="login-form">
-        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" class="demo-ruleForm" status-icon>
+        <el-form
+            :model="ruleForm"
+            :rules="rules"
+            ref="ruleForm"
+            class="demo-ruleForm"
+            status-icon>
           <el-form-item prop="name" class="login-user">
             <el-input v-model="ruleForm.name" prefix-icon="el-icon-user-solid" placeholder="请输入用户名"
                       size="medium"></el-input>
@@ -14,6 +19,10 @@
           <el-form-item prop="password">
             <el-input v-model="ruleForm.password" prefix-icon="el-icon-lock" type="password" size="medium"
                       placeholder="请输入密码"></el-input>
+          </el-form-item>
+          <el-form-item prop="code">
+            <el-input v-model="ruleForm.code" placeholder="请输入验证码"/>
+            <div id="code" @click="getCode"></div>
           </el-form-item>
           <el-button type="primary" @click="submitForm('ruleForm')" class="login-button">登录</el-button>
         </el-form>
@@ -23,6 +32,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 export default {
   name: "Login",
   data() {
@@ -30,6 +40,7 @@ export default {
       ruleForm: {
         name: '',
         password: '',
+        code: ''
       },
       rules: {
         name: [
@@ -39,11 +50,16 @@ export default {
         password: [
           {required: true, message: '请输入密码', trigger: 'blur'},
         ],
-      }
+        code: [
+          {required: true, message: '请输入验证码', trigger: 'blur'},
+        ]
+      },
     };
   },
-  computed: {
+  mounted() {
+    this.getCode()
   },
+  computed: {},
   methods: {
     submitForm: async function (formName) {
       this.$refs[formName].validate(async (valid) => {
@@ -73,20 +89,37 @@ export default {
             }
           }).catch(() => {
             this.$message({
-              message: '登录失败，请检查用户名或密码',
+              message: '登' +
+                  '录失败，请检查用户名或密码',
               type: "error",
               showClose: true,
             })
           })
         } else {
           this.$message({
-            message: '用户名或密码验证失败',
+            message: '请检查用户名或密码或验证码是否填写',
             type: "error",
             showClose: true
           })
           return false;
         }
       });
+    },
+    getCode(){
+      this.$axios.get('/getCode').then(response =>{
+        // console.log(response.data.data.code)
+        const ProFile = Vue.extend({
+          template: `${response.data.data.code}`,
+          data: function () {
+            return {
+              firstName: 'Walter',
+              lastName: 'White',
+              alias: 'Heisenberg'
+            }
+          }
+        })
+        new ProFile().$mount('#code')
+      })
     },
   }
 }

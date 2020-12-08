@@ -106,22 +106,22 @@ export default {
       numberInfo: [
         {
           img: 'el-icon-user-solid',
-          title: '访问人数',
+          title: '人员总数',
           index: '3344',
         },
         {
-          img: 'el-icon-s-comment',
-          title: '消息通知',
+          img: 'el-icon-school',
+          title: '部门总数',
           index: '33',
         },
         {
-          img: 'el-icon-s-finance',
-          title: '金额交易',
+          img: 'el-icon-circle-plus-outline',
+          title: '人员新增数',
           index: '3124',
         },
         {
-          img: 'el-icon-s-shop',
-          title: '商品数量',
+          img: 'el-icon-circle-plus',
+          title: '部门新增数',
           index: '3586',
         },
       ],

@@ -11,25 +11,25 @@
         active-text-color="#1890FF">
       <el-menu-item index="/main/index">
         <i class="el-icon-s-platform"></i>
-        <span>控制台</span>
+        <span>数据展示</span>
       </el-menu-item>
       <el-submenu index="/main/info">
         <template slot="title">
           <i class="el-icon-tickets"></i>
           <span slot="title">信息管理</span>
         </template>
-        <el-menu-item index="/main/info/shopInfo">
+        <el-menu-item index="/main/info/department">
           <i class="el-icon-tickets"></i>
-          <span slot="title">商品管理</span>
+          <span slot="title">部门管理</span>
         </el-menu-item>
-        <el-menu-item index="/main/info/userPicture">
+        <el-menu-item index="/main/info/user">
           <i class="el-icon-tickets"></i>
-          <span slot="title">头像管理</span>
+          <span slot="title">人员管理</span>
         </el-menu-item>
       </el-submenu>
-      <el-menu-item index="/main/user">
+      <el-menu-item index="/main/system">
         <i class="el-icon-user-solid"></i>
-        <span slot="title">用户管理</span>
+        <span slot="title">系统管理</span>
       </el-menu-item>
     </el-menu>
   </div>
@@ -57,14 +57,14 @@ export default {
         case '/main/index':
           this.$router.push('/main/index')
           break;
-        case '/main/user':
-          this.$router.push('/main/user')
+        case '/main/system':
+          this.$router.push('/main/system')
           break;
-        case '/main/info/shopInfo':
-          this.$router.push('/main/info/shopInfo')
+        case '/main/info/department':
+          this.$router.push('/main/info/department')
           break;
-        case '/main/info/userPicture':
-          this.$router.push('/main/info/userPicture')
+        case '/main/info/user':
+          this.$router.push('/main/info/user')
           break;
       }
     }
