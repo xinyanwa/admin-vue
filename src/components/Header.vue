@@ -34,11 +34,11 @@ export default {
       }
     },
     getUserPicture() {
-      if (sessionStorage.getItem('userPicture')) {
+      /*if ((sessionStorage.getItem('userPicture') !== '' )||(sessionStorage.getItem('userPicture') !== undefined ) || (sessionStorage.getItem('userPicture') !== null ) ) {
         return sessionStorage.getItem('userPicture');
-      } else {
+      } else {*/
         return 'https://tse2-mm.cn.bing.net/th/id/OIP.jogpN2lmbZSn7CCr2j_oqAHaHa?w=148&h=150&c=7&o=5&dpr=1.25&pid=1.7'
-      }
+     /* }*/
     }
   },
 }

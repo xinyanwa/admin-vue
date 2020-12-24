@@ -73,7 +73,7 @@ export default {
             if (code === 200) {
               console.log(111+response.data.data.response[0])
               sessionStorage.setItem('userName', response.data.data.response[0].user)
-              sessionStorage.setItem('userPicture', response.data.data.response[0].pricer)
+              sessionStorage.setItem('userPicture', response.data.data.response[0].picture)
               this.$store.dispatch('handleSetUserInfo',response.data.data.response[0])
               this.$router.push('/main')
               this.$message({
